@@ -1,0 +1,56 @@
+1- Read the Data 
+Union Sales then Join with Product(Product ID) and Geo(Zip), Then Product with Manufacture (Manufacture ID)
+
+2- Clean the Data
+	1- Country "USA" if NULL
+	2- ADD KPI Value based On Units and Revenu
+        3- IF CONTAINS([City], ",") THEN
+	   LEFT([City] , FIND([City], ",") -1)
+           ELSE [City]
+           END
+        4- Split Price Value
+        5- Create Price bin
+        6- Logo to URL link
+	7- Product type (split) 
+
+3- Create Sheets
+Not Nec Top of dashboard with Brand
+	1- Sum Revenue
+        2- AVG manufacture Revenue  (Manufacure in detail, WINDOW_AVG, Blank)
+	3- Sum Units
+	4- AVG manufacture Units (Manufacure in detail, WINDOW_AVG, Blank)
+	5- Total Revenue and Units Growth chart
+        6- Growth Rate for revenue and units
+	   ROUND(
+	   WINDOW_CORR( 
+           SUM([Revenue]),
+           AVG(DATEDIFF('day',#01/01/2013#, [Date]))
+           )
+           , 2 )
+
+ Feed     Growth in Revenue is more than units. More expensive are sold. So probably we can focus on the more expensive ones.
+
+        5- Hirechecial Manufacture and Country
+Not nec	6- Scatter plot revenue vs units
+
+ Feed     (Showing that it wont there is direct relation and we can use them instead of each other )
+
+        6- Revenue Share per manufacture  (Value, Percentage, Rank rev)
+        7- Units Share per manufacture  (Value, Percentage, Rank unit)
+
+Feed Anlysis of running total and special case (Low revenue and high units and high growth) pomum Or high growth Quibus
+
+	8- Growth Rate (manufacture and date in details) sort out And Growth Rate of country
+        9- Boxplot of country and  Revenue, rank revenue manufacture color
+        10- Price Comparison create lower and higher bound parameters 400 and 1000. create catergories of price.
+	    And see how much is sold per country per price bin
+Feed  We can see top revenue comes from	 the manufacture with which type of price bin (Low in this case)
+
+       11- Product Type (Revenue And Units comparison dual axis)
+       12- Top 10 Top Low Product type, country combination revenue or fixed country and product
+4- Dashboard
+	1- Overview (Sum Rev, Unit, AVG Rev, Unit, Rev and unit growth within time) 
+	2- Manufacture Level Analysis (Rev, Unit, Growth, Price)
+	3- Country Level Analysis (Rev, Unit, Growth, Price)
+	4- Product Type (Revenue And Units comparison dual axis, Top and low 10)
+        
